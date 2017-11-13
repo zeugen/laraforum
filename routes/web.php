@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 // admin routes
+Route::get('admin/', 'AdminController@index');
 Route::get('admin/users', 'AdminUsersController@index');
 
 Route::get('threads', 'ThreadsController@index')->name('threads');
