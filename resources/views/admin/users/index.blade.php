@@ -36,7 +36,7 @@
               <th>Email</th>
              <th>Role</th>
               <th>Status</th>
-              <th>Confirmed</th>
+              
               <th>Time Created</th>
               <th>Time Updated</th>
             </tr>
@@ -53,9 +53,7 @@
                   <td>
                     {{$user->is_active==1?'active':'Not ACTIVE'}}
                   </td>
-                  <td>
-                    {{$user->confirmed==1?'TRUE':'Not CONFIRMED'}}
-                  </td>
+
 
                   <td>{{$user->created_at->diffForHumans()}}</td>
                   <td>{{$user->updated_at ->diffForHumans()}}</td>

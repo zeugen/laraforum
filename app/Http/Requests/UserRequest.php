@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
             'email'=>'required',
             'role_id'=>'required',
             'is_active'=>'required',
-            'password'=>'required'
+            'password'=>'required',
 
         ];
     }

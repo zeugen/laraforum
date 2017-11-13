@@ -42,11 +42,11 @@
                       {!! Form::label('role_id', 'Role: ') !!}
                       {!! Form::select('role_id', [''=> 'Choose Options'] + $roles, null, ['class'=>"form-control"]) !!}
                   </div>
-                   <div class="form-group">
+                   {{-- <div class="form-group">
 
                       {!! Form::label('file', 'Upload you Avatar (profile picture): ') !!}
                       {!! Form::file('file', null, ['class'=>"form-control"]) !!}
-                  </div>
+                  </div> --}}
                   <div class="form-group">
 
                       {!! Form::label('password', 'Password: ') !!}
