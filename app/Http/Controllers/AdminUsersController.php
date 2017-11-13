@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
@@ -28,7 +28,9 @@ class AdminUsersController extends Controller
     public function create()
     {
         //
-        return view('admin.user.create');
+        $roles = Role::pluck('name','id')->all();
+        return view ('admin.users.create', compact('roles'));
+
     }
 
     /**
@@ -37,9 +39,10 @@ class AdminUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         //
+        return $request->all();
     }
 
     /**
