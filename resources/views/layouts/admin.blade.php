@@ -10,11 +10,11 @@
   <div class="wrapper">
     {{-- fixed top navigation - main nav --}}
     <header class="main-header">
-      @include('partials._adminMainHeaderNav')
+      @include('layouts.admin._adminMainHeaderNav')
     </header>
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
-      @include('partials._adminSidebar')
+      @include('layouts.admin._adminSidebar')
       <!-- /.sidebar -->
     </aside>
 
@@ -45,7 +45,7 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
+    {{-- footer --}}
     <footer class="main-footer">
       <div class="pull-right hidden-xs">
         <b>Version</b> 2.4.0

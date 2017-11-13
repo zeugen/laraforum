@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Role;
 
 class User extends Authenticatable
 {
@@ -136,5 +137,12 @@ class User extends Authenticatable
     public function visitedThreadCacheKey($thread)
     {
         return sprintf("users.%s.visits.%s", $this->id, $thread->id);
+    }
+    /**
+    *roles
+    *
+    */
+    public function role(){
+      return $this->belongsTo('App\Role');
     }
 }
