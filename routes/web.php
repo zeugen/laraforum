@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('admin/', 'AdminController@index');
 
 // route resource for AdminUsersController
-Route::resource('admin/users/', 'AdminUsersController');
+Route::resource('admin/users', 'AdminUsersController');
 Route::get('threads', 'ThreadsController@index')->name('threads');
 Route::get('threads/create', 'ThreadsController@create');
 Route::get('threads/search', 'SearchController@show');

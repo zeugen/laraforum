@@ -84,8 +84,8 @@
       </span>
     </a>
       <ul class="treeview-menu">
-        <li><a href="#"><i class="fa fa-circle-o"></i> Users</a></li>
-        <li><a href="#"><i class="fa fa-circle-o"></i> Create</a></li>
+        <li><a href="{{URL::to('admin/users/')}}"><i class="fa fa-circle-o"></i> Users</a></li>
+        <li><a href="{{URL::to('admin/users/create')}}"><i class="fa fa-circle-o"></i> Create</a></li>
 
 
       </ul>
