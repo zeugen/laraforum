@@ -27,6 +27,14 @@ Route::group(['middleware'=>'blogAdmin'], function(){
   Route::resource('admin/users', 'AdminUsersController');
   // Route::get('admin/users/index', 'AdminUsersController@store');
 });
+// admin routes USE Middleware TO BLOCK oTHER USERS FROM ACCESSIN THIS RouteServiceProvide
+Route::group(['middleware'=>'author'], function(){
+  Route::get('admin/', 'AdminController@index');
+
+  // route resource for AdminUsersController
+  // Route::resource('admin/users', 'AdminUsersController');
+  // Route::get('admin/users/index', 'AdminUsersController@store');
+});
 
 
 Route::get('threads', 'ThreadsController@index')->name('threads');

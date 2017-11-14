@@ -159,5 +159,11 @@ class User extends Authenticatable
       }
       return false;
     }
+    public function checkAuthor(){
+      if($this->role->name === "author" && $this->is_active  === 1){
+        return true;
+      }
+      return false;
+    }
 
 }
