@@ -24,6 +24,8 @@ Route::get('admin/', 'AdminController@index');
 
 // route resource for AdminUsersController
 Route::resource('admin/users', 'AdminUsersController');
+// Route::get('admin/users/index', 'AdminUsersController@store');
+
 Route::get('threads', 'ThreadsController@index')->name('threads');
 Route::get('threads/create', 'ThreadsController@create');
 Route::get('threads/search', 'SearchController@show');

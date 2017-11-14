@@ -42,6 +42,13 @@ class AdminUsersController extends Controller
      */
     public function store(UserRequest $request)
     {
+      //check if password is empty
+      if(trim($request->password == '')){
+        $input = $request->except('password');
+      }else{
+        $input = $request->all();
+      }
+
         $input = $request->all();
         if($file = $request->file('avatar_path'))
         {
@@ -50,9 +57,10 @@ class AdminUsersController extends Controller
           $photo = Photo::create(['file' => $name]);
           $input['avatar_path'] = $photo->id;
         }
+
         $input['password'] = bcrypt($request -> password);
         User::create($input);
-         return redirect('admin.users.index');
+         return redirect('admin/users/');
         // return $request->all();
     }
 
@@ -76,6 +84,11 @@ class AdminUsersController extends Controller
     public function edit($id)
     {
         //
+                //pass in roles as in create method
+        $roles = Role::pluck('name', 'id')->all();
+
+        $user = User::findOrFail($id);
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -85,9 +98,29 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+      //find users
+      $user = User::findOrFail($id);
+
+      //check if password is empty
+      if(trim($request->password == '')){
+        $input = $request->except('password');
+      }else{
+        $input = $request->all();
+      }
+
+      //
+      if($file = $request->file('photo_id')){
+        $name = time().$file->getClientOriginalName();
+        $file->move('img/user', $name);
+        $photo = Photo::create(['file'=>$name]);
+        $input['avatar_path'] = $photo->id;
+      }
+        //first encrypt password
+        $input['password'] = bcrypt($request -> password);
+        $user->update($input);
+       return redirect('/admin/users');
     }
 
     /**
