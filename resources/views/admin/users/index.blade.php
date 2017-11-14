@@ -1,4 +1,6 @@
 @extends('layouts.admin.app')
+@section('title', '| Admin Dashboard')
+
 @section('content')
   <section class="content-header">
 

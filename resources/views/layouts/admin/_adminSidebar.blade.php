@@ -99,8 +99,8 @@
       </span>
     </a>
       <ul class="treeview-menu">
-        <li class=""><a href="#"><i class="fa fa-circle-o"></i> All Posts</a></li>
-        <li><a href="#"><i class="fa fa-circle-o"></i> Create Post</a></li>
+        <li class=""><a href="{{route('posts.index')}}"><i class="fa fa-circle-o"></i> All Posts</a></li>
+        <li><a href="{{route('posts.create')}}"><i class="fa fa-circle-o"></i> Create Post</a></li>
 
         <li class="treeview {{Request::is('admin/categories') ? "active" :""}}">
           <a href="#"><i class="fa fa-circle-o"></i> Post Categories

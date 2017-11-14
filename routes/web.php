@@ -14,14 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('about', function () {
+    return view('about');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+//Admin posts controller
 
+Route::resource('/admin/posts', 'AdminPostsController');
 // admin routes USE Middleware TO BLOCK oTHER USERS FROM ACCESSIN THIS RouteServiceProvide
 Route::group(['middleware'=>'blogAdmin'], function(){
-  Route::get('admin/', 'AdminController@index');
+  Route::get('admin/index', 'AdminController@index');
 
   // route resource for AdminUsersController
   Route::resource('admin/users', 'AdminUsersController');
@@ -29,7 +34,7 @@ Route::group(['middleware'=>'blogAdmin'], function(){
 });
 // admin routes USE Middleware TO BLOCK oTHER USERS FROM ACCESSIN THIS RouteServiceProvide
 Route::group(['middleware'=>'author'], function(){
-  Route::get('admin/', 'AdminController@index');
+  // Route::get('admin/', 'AdminController@index');
 
   // route resource for AdminUsersController
   // Route::resource('admin/users', 'AdminUsersController');

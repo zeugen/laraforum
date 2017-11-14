@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Aurora') }}</title>
+    <title>Aurora @yield('title')</title>
 
     <!-- Styles -->
     <!-- Bootstrap 3.3.7 -->
