@@ -109,7 +109,8 @@
           </span>
         </a>
           <ul class="treeview-menu ">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Categories</a></li>
+            <li><a href="{{route('categories.index')}}"><i class="fa fa-circle-o"></i> Categories</a></li>
+            <li><a href="{{route('categories.create')}}"><i class="fa fa-circle-o"></i> Create Category</a></li>
 
           </ul>
         </li>

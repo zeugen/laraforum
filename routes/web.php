@@ -27,6 +27,7 @@ Route::resource('/admin/posts', 'AdminPostsController');
 // admin routes USE Middleware TO BLOCK oTHER USERS FROM ACCESSIN THIS RouteServiceProvide
 Route::group(['middleware'=>'blogAdmin'], function(){
   Route::get('admin/index', 'AdminController@index');
+  Route::resource('admin/categories', 'AdminCategoriesController');
 
   // route resource for AdminUsersController
   Route::resource('admin/users', 'AdminUsersController');
