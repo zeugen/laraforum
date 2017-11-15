@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     {{-- <link href="{{asset('css/demo.css')}}" rel="stylesheet" /> --}}
-    <link href="{{asset('css/masonry.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('css/vendor/jquery.atwho.css')}}">
+    {{-- <link href="{{asset('css/masonry.css')}}" rel="stylesheet" /> --}}
     <link href="{{asset('css/app.css')}}" rel="stylesheet" />
 </head>
 
@@ -38,14 +39,15 @@
             <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image={{asset('img/blurred-image-1.jpg')}}>
                 <ul class="navbar-nav">
                   <li class="nav-item {{Request::is('/') ? "active" :""}}">
-                      <a class="nav-link" href="{{ url('/') }}">
-                          <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                      <a class="nav-link" href="{{ url('/home') }}">
+                          <i class="now-ui-icons files_single-copy-04"></i>
                           <p>Posts</p>
                       </a>
 
                   </li>
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="now-ui-icons ui-2_chat-round"></i>
                           <p>
                             Forum
                           </p>
@@ -63,19 +65,20 @@
                   <li class="nav-item {{Request::is('/about') ? "active" :""}}">
                     @if(Auth()->check())
                       <a class="nav-link" href="/threads/create" >
-                          <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                          <i class="now-ui-icons arrows-1_share-66"></i>
                           <p>New Thread</p>
                       </a>
                     @else
 
                       <a class="nav-link" href="/threads/create" rel="tooltip" title="You have to be logged in to submit a thread" data-placement="bottom">
-                          <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                          <i class="now-ui-icons arrows-1_share-66"></i>
                           <p>New Thread</p>
                       </a>
                     @endif
                   </li>
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="now-ui-icons design_bullet-list-67"></i>
                           <p>
                             Channels
                           </p>
@@ -90,25 +93,19 @@
 
                       </div>
                   </li>
-                    <li class="nav-item {{Request::is('/') ? "active" :""}}">
-                        <a class="nav-link" href="{{ url('/') }}">
-                            <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                            <p>Posts</p>
-                        </a>
 
-                    </li>
 
                     <!-- authentication links -->
                     @if(Auth::guest())
                     <li class="nav-item {{Request::is('/login') ? "active" :""}}">
                         <a class="nav-link" href="{{ route('login') }}" >
-                            <i class="now-ui-icons files_paper"></i>
+                            <i class="now-ui-icons users_single-02"></i>
                             <p>Login</p>
                         </a>
                     </li>
                     <li class="nav-item {{Request::is('/register') ? "active" :""}}">
                         <a class="nav-link btn btn-neutral" href="{{ route('register') }}" >
-                            <i class="now-ui-icons arrows-1_share-66"></i>
+                            <i class="now-ui-icons gestures_tap-01"></i>
                             <p>Register</p>
                         </a>
                     </li>
@@ -123,6 +120,10 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                             <a class="dropdown-item" href="{{ route('profile', Auth::user()) }}">My Profile</a>
+                            @if (Auth::user()->role->name === 'administrator')
+                              <a class="dropdown-item" href="{{ route('users.index') }}">Admin Dashboard</a>
+
+                            @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

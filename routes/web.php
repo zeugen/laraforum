@@ -21,6 +21,7 @@ Route::get('about', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('posts/single/{id}',['as'=>'posts.single', 'uses'=>'HomeController@getSingle'] );
 //Admin posts controller
 
 Route::resource('/admin/posts', 'AdminPostsController');
@@ -28,6 +29,7 @@ Route::resource('/admin/posts', 'AdminPostsController');
 Route::group(['middleware'=>'blogAdmin'], function(){
   Route::get('admin/index', 'AdminController@index');
   Route::resource('admin/categories', 'AdminCategoriesController');
+  Route::resource('/admin/posts', 'AdminPostsController');
 
   // route resource for AdminUsersController
   Route::resource('admin/users', 'AdminUsersController');
@@ -36,12 +38,10 @@ Route::group(['middleware'=>'blogAdmin'], function(){
 // admin routes USE Middleware TO BLOCK oTHER USERS FROM ACCESSIN THIS RouteServiceProvide
 Route::group(['middleware'=>'author'], function(){
   // Route::get('admin/', 'AdminController@index');
-
-  // route resource for AdminUsersController
-  // Route::resource('admin/users', 'AdminUsersController');
-  // Route::get('admin/users/index', 'AdminUsersController@store');
 });
 
+// unauthenticated users routes
+//Route::get('home', 'PagesController@getIndex');
 
 Route::get('threads', 'ThreadsController@index')->name('threads');
 Route::get('threads/create', 'ThreadsController@create');

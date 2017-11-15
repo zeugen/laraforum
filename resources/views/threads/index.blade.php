@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user.app_inner')
 
 @section('content')
     <div class="container">
@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-md-4">
-                <div class="panel panel-default">
+                <div class="article-panel ">
                     <div class="panel-heading">
                         Search
                     </div>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                {{-- @if (count($trending)) 
+                {{-- @if (count($trending))
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Trending Threads

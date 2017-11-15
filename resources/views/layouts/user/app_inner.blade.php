@@ -17,13 +17,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     {{-- <link href="{{asset('css/demo.css')}}" rel="stylesheet" /> --}}
-
+    <link rel="stylesheet" href="{{asset('css/vendor/jquery.atwho.css')}}">
+    {{-- <link href="{{asset('css/masonry.css')}}" rel="stylesheet" /> --}}
     <link href="{{asset('css/app.css')}}" rel="stylesheet" />
+    @yield('head')
 </head>
 
-<body class="login-page sidebar-collapse">
+<body class="index-page sidebar-collapse">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
+    <nav class="navbar navbar-expand-lg bg-primary fixed-top " >
         <div class="container">
             <div class="navbar-translate">
                 <a class="navbar-brand" href="{{ url('/') }}" rel="tooltip" title="For those in pursuit of good health" data-placement="bottom" >
@@ -119,6 +121,10 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                             <a class="dropdown-item" href="{{ route('profile', Auth::user()) }}">My Profile</a>
+                            @if (Auth::user()->role->name === 'administrator')
+                              <a class="dropdown-item" href="{{ route('users.index') }}">Admin Dashboard</a>
+
+                            @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -139,8 +145,10 @@
         </div>
     </nav>
     <!-- End Navbar -->
+    <div class="" style="margin-top:80px;">
+      @yield('content')
+    </div>
 
-    @yield('content')
 
     <!--   Core JS Files   -->
     <script src="{{asset('js/core/jquery.3.2.1.min.js')}}" type="text/javascript"></script>

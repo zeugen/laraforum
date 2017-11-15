@@ -1,9 +1,9 @@
 @forelse ($threads as $thread)
-    <div class="panel panel-default">
+    <div class="article-panel panel-default">
         <div class="panel-heading">
             <div class="level">
                 <div class="flex">
-                    <h4>
+                    <h2>
                         <a href="{{ $thread->path() }}">
                             @if (auth()->check() && $thread->hasUpdatesFor(auth()->user()))
                                 <strong>
@@ -13,16 +13,18 @@
                                 {{ $thread->title }}
                             @endif
                         </a>
-                    </h4>
+                    </h2>
 
                     <h5>
                         Posted By: <a href="{{ route('profile', $thread->creator) }}">{{ $thread->creator->name }}</a>
                     </h5>
                 </div>
+                <h6>
+                  <a href="{{ $thread->path() }}">
+                      {{ $thread->replies_count }} {{ str_plural('reply', $thread->replies_count) }}
+                  </a>
+                </h6>
 
-                <a href="{{ $thread->path() }}">
-                    {{ $thread->replies_count }} {{ str_plural('reply', $thread->replies_count) }}
-                </a>
             </div>
         </div>
 
@@ -31,7 +33,7 @@
         </div>
 
         <div class="panel-footer">
-            {{ $thread->visits }} Visits
+          <h6>{{ $thread->visits }} Visits</h6>  
         </div>
     </div>
 @empty
