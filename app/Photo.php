@@ -8,6 +8,7 @@ class Photo extends Model
 {
     //
     protected $uploads = '/images/';
+    protected $img_placeholder = '/img/user/userplaceholder.png';
     protected $fillable =['file'];
 
     //use an accessor to show $uploads when image is rendered

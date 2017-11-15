@@ -55,7 +55,7 @@
                     <td>{{str_limit($post->body,15)}}</td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at ->diffForHumans()}}</td>
-                    {{-- <td><a href="{{route('admin.posts.edit', $post->id)}}" class="text-aqua">Edit Post</a></td> --}}
+                    <td><a href="{{route('posts.edit', $post->id)}}" class="text-aqua">Edit Post</a></td>
 
                   </tr>
                 @endforeach
