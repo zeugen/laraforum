@@ -21,7 +21,7 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet" />
 </head>
 
-<body class="index-page sidebar-collapse">
+<body class="login-page sidebar-collapse">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
         <div class="container">
@@ -90,13 +90,7 @@
 
                       </div>
                   </li>
-                    <li class="nav-item {{Request::is('/') ? "active" :""}}">
-                        <a class="nav-link" href="{{ url('/') }}">
-                            <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                            <p>Posts</p>
-                        </a>
 
-                    </li>
 
                     <!-- authentication links -->
                     @if(Auth::guest())
