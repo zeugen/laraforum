@@ -22,27 +22,29 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('posts/single/{id}',['as'=>'posts.single', 'uses'=>'HomeController@getSingle'] );
-//Admin posts controller
 
-Route::resource('/admin/posts', 'AdminPostsController');
+
+
 // admin routes USE Middleware TO BLOCK oTHER USERS FROM ACCESSIN THIS RouteServiceProvide
 Route::group(['middleware'=>'blogAdmin'], function(){
   Route::get('admin/index', 'AdminController@index');
   Route::resource('admin/categories', 'AdminCategoriesController');
-  Route::resource('/admin/posts', 'AdminPostsController');
+  Route::resource('admin/posts', 'AdminPostsController');
 
   // route resource for AdminUsersController
   Route::resource('admin/users', 'AdminUsersController');
   // Route::get('admin/users/index', 'AdminUsersController@store');
 });
-// admin routes USE Middleware TO BLOCK oTHER USERS FROM ACCESSIN THIS RouteServiceProvide
+// author routes USE Middleware TO BLOCK oTHER USERS FROM ACCESSIN THIS RouteServiceProvide
 Route::group(['middleware'=>'author'], function(){
   // Route::get('admin/', 'AdminController@index');
+  Route::resource('author/posts', 'AuthorController');
 });
+// Route::resource('author/posts', 'AuthorController');
 
-// unauthenticated users routes
-//Route::get('home', 'PagesController@getIndex');
-
+//resource for comments
+Route::post('comments/{post_id}',['uses'=> 'CommentsController@store', 'as'=>'comments.store']);
+//thread routes
 Route::get('threads', 'ThreadsController@index')->name('threads');
 Route::get('threads/create', 'ThreadsController@create');
 Route::get('threads/search', 'SearchController@show');

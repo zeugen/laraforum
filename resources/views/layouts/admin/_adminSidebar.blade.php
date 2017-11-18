@@ -6,7 +6,7 @@
       <img src="#" class="user-image" alt="User Image">
     </div>
     <div class="pull-left info">
-      <p>name </p>
+      <p><span class="hidden-xs">{{Auth::user()->name}}</span> </p>
       <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
     </div>
   </div>
@@ -74,22 +74,24 @@
     </li>
 
 
+    @if (Auth::user()->role->name === 'administrator')
+      <li class="treeview {{Request::is('admin/users') ? "active" :""}} ">
+        <a href="#">
+        <i class="fa fa-users"></i>
+        <span>App Users</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+        <ul class="treeview-menu">
+          <li><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i> Users</a></li>
+          <li><a href="{{route('users.create')}}"><i class="fa fa-circle-o"></i> Create</a></li>
 
-    <li class="treeview {{Request::is('admin/users') ? "active" :""}} ">
-      <a href="#">
-      <i class="fa fa-users"></i>
-      <span>App Users</span>
-      <span class="pull-right-container">
-        <i class="fa fa-angle-left pull-right"></i>
-      </span>
-    </a>
-      <ul class="treeview-menu">
-        <li><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i> Users</a></li>
-        <li><a href="{{route('users.create')}}"><i class="fa fa-circle-o"></i> Create</a></li>
 
+        </ul>
+      </li>
+    @endif
 
-      </ul>
-    </li>
     <li class="treeview ">
       <a href="#">
       <i class="fa fa-book"></i>
@@ -102,6 +104,7 @@
         <li class=""><a href="{{route('posts.index')}}"><i class="fa fa-circle-o"></i> All Posts</a></li>
         <li><a href="{{route('posts.create')}}"><i class="fa fa-circle-o"></i> Create Post</a></li>
 
+        @if (Auth::user()->role->name === 'administrator')
         <li class="treeview {{Request::is('admin/categories') ? "active" :""}}">
           <a href="#"><i class="fa fa-circle-o"></i> Post Categories
           <span class="pull-right-container">
@@ -114,6 +117,7 @@
 
           </ul>
         </li>
+      @endif
       </ul>
     </li>
 

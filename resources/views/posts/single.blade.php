@@ -1,6 +1,6 @@
 @extends('layouts.user.app_inner')
-
-@section('title', "| post")
+<?php $titleTag= htmlspecialchars($post->title); ?>
+@section('title', "| $titleTag")
 
 @section('content')
   <div class="container">
@@ -29,10 +29,10 @@
       </div>
     </div>
     {{-- view comment section --}}
-    {{-- <div class="row">
+    <div class="row">
       <div class="col-md-8 col-md-offset-2">
 
-        <h1>Comments about this article</h1>
+        <h2>Comments on this article</h2>
         <hr>
 
         @foreach ($post->comments as $comment)
@@ -48,40 +48,40 @@
 
         @endforeach
       </div>
-    </div> --}}
+    </div>
     {{-- add comment seciton --}}
-    {{-- <div class="row">
+    <div class="row">
       <div class="col-md-6 col-md-offset-2">
         <hr>
         <H2>Leave a comment</H2>
         <hr>
         <div id="comment-form">
-          {{Form::open(['route'=> ['comments.store', $post->id], 'method'=>'POST'])}}
+          {{Form::open(['route'=> ['comments.store', $post->id, 'data-parsley-validate'=>''], 'method'=>'POST'])}}
 
             <div class="form-group">
               {{Form::label('name', 'Name')}}
-              {{Form::text('name', null, ['class'=>'form-control'])}}
+              {{Form::text('name', null, ['class'=>'form-control', 'required'=>''])}}
 
             </div>
 
             <div class="form-group">
               {{Form::label('email','Email')}}
-              {{Form::text('email',null, ['class'=>'form-control'])}}
+              {{Form::text('email',null, ['class'=>'form-control','required'=>''])}}
 
             </div>
             <div class="form-group">
               {{Form::label('comment', 'Comment')}}
-              {{Form:: textarea('comment',null, ['class'=>'form-control', 'rows'=>'5'])}}
+              {{Form:: textarea('comment',null, ['class'=>'form-control', 'rows'=>'5','required'=>''])}}
 
             </div>
             <div class="form-group">
-              {{Form::submit('Add Comment', ['class'=>'btn btn-block btn-primary btn-submit'])}}
+              {{Form::submit('Add Comment', ['class'=>'btn btn-block btn-success btn-submit'])}}
 
             </div>
           {{Form::close()}}
         </div>
       </div>
-    </div> --}}
+    </div>
 
   </div>
 

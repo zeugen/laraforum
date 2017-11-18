@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->limit(5)->get();
+        $posts = Post::orderBy('created_at', 'desc')->limit(5)->paginate(2);
         return view('home',compact('posts'));
     }
     //return single post

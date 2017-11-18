@@ -122,6 +122,9 @@
                             <a class="dropdown-item" href="{{ route('profile', Auth::user()) }}">My Profile</a>
                             @if (Auth::user()->role->name === 'administrator')
                               <a class="dropdown-item" href="{{ route('users.index') }}">Admin Dashboard</a>
+                            @elseif ((Auth::user()->role->name === 'author'))
+                                <a class="dropdown-item" href="{{ route('posts.index') }}">Author Dashboard</a>
+                            @else
 
                             @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"

@@ -67,10 +67,16 @@
                     </div>
                   </div>
                 </section>
-                <div class="text-center">
-                  {{-- the pagination --}}
-                </div>
+
               @endforeach
+              <div class="row">
+                <div class="col-sm-12">
+                  
+                    {{-- the pagination --}}
+                    {{$posts->links()}}
+
+                </div>
+              </div>
 
 
             </div>

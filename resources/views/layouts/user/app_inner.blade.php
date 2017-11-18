@@ -19,6 +19,7 @@
     {{-- <link href="{{asset('css/demo.css')}}" rel="stylesheet" /> --}}
     <link rel="stylesheet" href="{{asset('css/vendor/jquery.atwho.css')}}">
     {{-- <link href="{{asset('css/masonry.css')}}" rel="stylesheet" /> --}}
+    <link href="{{asset('css/parsley.css')}}" rel="stylesheet" />
     <link href="{{asset('css/app.css')}}" rel="stylesheet" />
     @yield('head')
 </head>
@@ -146,6 +147,7 @@
     </nav>
     <!-- End Navbar -->
     <div class="" style="margin-top:80px;">
+      @include('layouts._messages')
       @yield('content')
     </div>
 
@@ -160,6 +162,7 @@
     <script src="{{asset('js/plugins/bootstrap-datepicker.js')}}" type="text/javascript"></script>
     <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
      <script src="{{asset('js/now-ui-kit.js')}}" type="text/javascript"></script>
+     <script src="{{asset('js/parsley.min.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
 
 
