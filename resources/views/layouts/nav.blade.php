@@ -72,6 +72,10 @@
                             <li>
                                 <a href="{{ route('profile', Auth::user()) }}">My Profile</a>
                             </li>
+                            @if (Auth::user()->role->name === 'administrator')
+                              <a class="dropdown-item" href="{{ route('users.index') }}">Admin Dashboard</a>
+                            @endif
+
 
                             <li>
                                 <a href="{{ route('logout') }}"

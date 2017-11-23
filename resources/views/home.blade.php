@@ -16,25 +16,12 @@
           </div>
       </div>
       <div class="main">
-        <div class="container-fluid">
+        <div class="container">
         <div class=" row">
             {{-- this column will hold the list of moderators --}}
-             <div class="col-md-3 ">
-                <div class="specialists-panel ">
-                    <h6>Specialists</h6>
-                    <img src="{{asset('img/user/7.jpg')}}" alt="" class="img-responsive rounded-circle">
-                    <ul class="specialist-profile-list">
-                      <li >
 
-
-
-                      </li>
-                    </ul>
-
-                </div>
-            </div>
             {{-- this column will hold the articles --}}
-            <div class="col-md-6">
+            <div class="col-md-10 offset-md-1">
               @foreach ($posts as $post)
                 <section class="article-panel  raised">
                   <header>
@@ -71,7 +58,7 @@
               @endforeach
               <div class="row">
                 <div class="col-sm-12">
-                  
+
                     {{-- the pagination --}}
                     {{$posts->links()}}
 
@@ -81,15 +68,7 @@
 
             </div>
             {{-- this column will hold the categories, filters, tags, links --}}
-            <div class="col-md-3 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Dashboard</div>
 
-                    <div class="panel-body">
-                        You are logged in! <h1>users home page that should be accessed after login</h1>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 {{--

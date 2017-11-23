@@ -126,6 +126,9 @@
                               <a class="dropdown-item" href="{{ route('users.index') }}">Admin Dashboard</a>
 
                             @endif
+                            @if (Auth::user()->role->name === 'author')
+                              <a class="dropdown-item" href="{{ url('author/posts') }}">Author Dashboard</a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
